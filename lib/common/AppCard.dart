@@ -11,7 +11,7 @@ class AppCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return (Container(
-      height: 65,
+      height: 65.5,
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(0),
