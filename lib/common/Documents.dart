@@ -1,3 +1,5 @@
+import 'package:dio/dio.dart';
+import 'package:ext_storage/ext_storage.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
@@ -7,6 +9,8 @@ import 'package:my_info/api/FirebaseApi.dart';
 import 'package:my_info/api/FirebaseApiD.dart';
 import 'package:my_info/model/Firebase_file.dart';
 import 'package:my_info/pages/image_page.dart';
+import 'package:permission_handler/permission_handler.dart';
+
 
 class UploadMultipleImageDemo extends StatefulWidget {
   @override
@@ -35,6 +39,8 @@ class _UploadMultipleImageDemoState extends State<UploadMultipleImageDemo> {
   @override
   Widget build(BuildContext context) {
     initialize();
+    final imgURL ="https://firebasestorage.googleapis.com/v0/b/my-docs-6fc8c.appspot.com/o/files%2FApplied%20Machine%20Learning%20in%20Python.pdf?alt=media&token=da9d29d9-7d87-44ef-aab4-5304a7643816";
+    var dio = Dio();
     return FutureBuilder<List<FirebaseFile>>(
         future: futureFiles,
         builder: (context, snapshot) {
@@ -105,7 +111,25 @@ class _UploadMultipleImageDemoState extends State<UploadMultipleImageDemo> {
                       final file = files[index];
                       return buildFile(context, file);
                     }
-                    ),)
+                    ),
+                    ),
+                    RaisedButton(
+                      color: Colors.grey[700],
+                      onPressed:()async{
+                        if (await Permission.storage.request().isGranted) {
+                        // getPermission();
+                        String path = await ExtStorage.getExternalStoragePublicDirectory(
+                          ExtStorage.DIRECTORY_DOWNLOADS);
+                          String fullPath = "$path/rohan1.pdf";
+                          print("hiiiii");
+                          download2(dio, imgURL,fullPath);
+                        }
+                      },
+                      child: Text(
+                        'Download',
+                        style: TextStyle(color: Colors.black),
+                      )
+                      ),
                 ],
               ));
                 }
@@ -113,6 +137,35 @@ class _UploadMultipleImageDemoState extends State<UploadMultipleImageDemo> {
         });
   }
 
+    // void getPermission() async{
+    //   print("Get Permission");
+    //   await PermissionHandler().requestPermissions([PermissionGroup.storage]);
+    // }
+
+Future download2(Dio dio, String url, String savePath) async {
+    //get pdf from link
+    Response response = await dio.get(
+      url,
+      // onReceiveProgress: showDownloadProgress,
+      //Received data with List<int>
+      options: Options(
+          responseType: ResponseType.bytes,
+          followRedirects: false,
+          validateStatus: (status) {
+            return status < 500;
+          }),
+    );
+
+    //write in download folder
+    File file = File(savePath);
+    var raf = file.openSync(mode: FileMode.write);
+    raf.writeFromSync(response.data);
+    await raf.close();
+  }
+//progress bar
+  // if (total != -1) {
+  // print((received / total * 100).toStringAsFixed(0) + "%");
+  // }
     Widget buildFile(BuildContext context, FirebaseFile file) => ListTile(
         leading: ClipOval(
           child: Image.network(

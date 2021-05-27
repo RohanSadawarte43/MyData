@@ -30,7 +30,7 @@ class FirebaseApiD {
   static Future downloadFile(Reference ref) async {
     final dir = await getApplicationDocumentsDirectory();
     final file = File('${dir.path}/${ref.name}');
-
+    print('Helloooo : ${dir.path}/${ref.name}');
     await ref.writeToFile(file);
   }
 }

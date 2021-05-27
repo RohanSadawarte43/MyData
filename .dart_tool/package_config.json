@@ -50,6 +50,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "ext_storage",
+      "rootUri": "file:///C:/Users/ROHAN/Desktop/flutter/.pub-cache/hosted/pub.dartlang.org/ext_storage-1.0.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
       "name": "fake_async",
       "rootUri": "file:///C:/Users/ROHAN/Desktop/flutter/.pub-cache/hosted/pub.dartlang.org/fake_async-1.2.0",
       "packageUri": "lib/",
@@ -118,6 +124,12 @@
     {
       "name": "flutter",
       "rootUri": "file:///C:/Users/ROHAN/Desktop/flutter/packages/flutter",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "flutter_downloader",
+      "rootUri": "file:///C:/Users/ROHAN/Desktop/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_downloader-1.6.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -368,7 +380,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2021-05-15T06:05:13.322604Z",
+  "generated": "2021-05-25T02:44:41.424162Z",
   "generator": "pub",
   "generatorVersion": "2.12.3"
 }
