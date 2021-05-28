@@ -159,7 +159,9 @@ Future download2(Dio dio, String url, String savePath) async {
     //write in download folder
     File file = File(savePath);
     var raf = file.openSync(mode: FileMode.write);
+    print("Check1");
     raf.writeFromSync(response.data);
+    print("Check2");
     await raf.close();
   }
 //progress bar
