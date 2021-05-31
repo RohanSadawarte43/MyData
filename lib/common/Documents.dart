@@ -40,10 +40,6 @@ class _UploadMultipleImageDemoState extends State<UploadMultipleImageDemo> {
   @override
   Widget build(BuildContext context) {
     initialize();
-
-    final imgURL =
-        "https://firebasestorage.googleapis.com/v0/b/my-docs-6fc8c.appspot.com/o/files%2FApplied%20Machine%20Learning%20in%20Python.pdf?alt=media&token=da9d29d9-7d87-44ef-aab4-5304a7643816";
-    var dio = Dio();
     return FutureBuilder<List<FirebaseFile>>(
         future: futureFiles,
         builder: (context, snapshot) {
@@ -55,96 +51,114 @@ class _UploadMultipleImageDemoState extends State<UploadMultipleImageDemo> {
                 return UploadMultipleImageDemo();
               } else {
                 final files = snapshot.data;
-                return Container(
-                    color: Colors.grey[900],
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: <Widget>[
-                        SizedBox(
-                          height: 25,
-                        ),
-                        Container(
-                          child: Text(
-                            'Upload',
-                            style: TextStyle(color: Colors.white, fontSize: 25),
-                          ),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.grey[800],
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.grey[850], spreadRadius: 3),
-                            ],
-                          ),
-                          padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
-                        ),
-                        SizedBox(height: 20,),
-                        RaisedButton(
-                            color: Colors.grey[700],
-                            onPressed: selectFile,
-                            child: Text(
-                              'Select',
-                              style: TextStyle(color: Colors.black),
-                            )),
-                        Text(
-                          filename,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                          ),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        RaisedButton(
-                            color: Colors.grey[700],
-                            onPressed: uploadFile,
-                            child: Text(
-                              'Upload',
-                              style: TextStyle(color: Colors.black),
-                            )),
-                        task != null ? buildUploadStatus(task) : Container(),
-                         Text(
-                          uploadText,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                          ),
-                        ),
-                        Divider(
-                          color: Colors.white,
-                        ),
-                        SizedBox(
-                          height: 25,
-                        ),
-                        Container(
-                          child: Text(
-                            'Download',
-                            style: TextStyle(color: Colors.white, fontSize: 25),
-                          ),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.grey[800],
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.grey[850], spreadRadius: 3),
-                            ],
-                          ),
-                          padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
-                        ),
-                        SizedBox(
-                          height: 12,
-                        ),
-                        Expanded(
-                          child: ListView.builder(
-                              itemCount: files.length,
-                              itemBuilder: (context, index) {
-                                final file = files[index];
-                                return buildFile(context, file);
-                              }),
-                        ),
-                      ],
-                    ));
+                return Scaffold(
+                    appBar: AppBar(
+                      title: Text(
+                        'Important Files',
+                        style: TextStyle(
+                          fontSize: 25,
+                        )
+                        ,),
+                      backgroundColor: Colors.grey[800],
+                      centerTitle: true,
+                      
+                    ),
+                    body: Container(
+                        color: Colors.grey[900],
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: <Widget>[
+                            SizedBox(
+                              height: 25,
+                            ),
+                            Container(
+                              child: Text(
+                                'Upload',
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 20),
+                              ),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.grey[800],
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: Colors.grey[850], spreadRadius: 3),
+                                ],
+                              ),
+                              padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            RaisedButton(
+                                color: Colors.grey[700],
+                                onPressed: selectFile,
+                                child: Text(
+                                  'Select',
+                                  style: TextStyle(color: Colors.black),
+                                )),
+                            Text(
+                              filename,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            RaisedButton(
+                                color: Colors.grey[700],
+                                onPressed: uploadFile,
+                                child: Text(
+                                  'Upload',
+                                  style: TextStyle(color: Colors.black),
+                                )),
+                            task != null
+                                ? buildUploadStatus(task)
+                                : Container(),
+                            Text(
+                              uploadText,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                              ),
+                            ),
+                            Divider(
+                              color: Colors.white,
+                            ),
+                            SizedBox(
+                              height: 25,
+                            ),
+                            Container(
+                              child: Text(
+                                'Download',
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 20),
+                              ),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.grey[800],
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: Colors.grey[850], spreadRadius: 3),
+                                ],
+                              ),
+                              padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            Expanded(
+                              child: ListView.builder(
+                                  itemCount: files.length,
+                                  itemBuilder: (context, index) {
+                                    final file = files[index];
+                                    return buildFile(context, file);
+                                  }),
+                            ),
+                          ],
+                        )));
               }
           }
         });
@@ -187,20 +201,16 @@ class _UploadMultipleImageDemoState extends State<UploadMultipleImageDemo> {
       title: Text(
         (file.name).split(".")[0],
         style: TextStyle(
-          fontWeight: FontWeight.bold,
-          decoration: TextDecoration.underline,
-          color: Colors.blue,
+          color: Colors.amberAccent,
+          fontSize: 18,
         ),
       ),
-      // onTap: () => Navigator.of(context).push(MaterialPageRoute(
-      //   builder: (context) => ImagePage(file: file),
-      // )),
       leading: Container(
-        color: Colors.white,
+        color: Colors.grey[800],
         child: IconButton(
             icon: Icon(Icons.file_download),
             splashColor: Colors.white,
-            color: Colors.green,
+            color: Colors.black,
             onPressed: () async {
               String name = file.name;
               final Reference ref =
@@ -264,9 +274,7 @@ class _UploadMultipleImageDemoState extends State<UploadMultipleImageDemo> {
     final destination = 'files/$filename';
     task = FirebaseApi.uploadFile(destination, file);
     setState(() {});
-    setState(() => {
-          uploadText = ""
-    });
+    setState(() => {uploadText = ""});
 
     if (task == null) {
       return null;
@@ -284,7 +292,7 @@ class _UploadMultipleImageDemoState extends State<UploadMultipleImageDemo> {
             final snap = snapshot.data;
             final progress =
                 ((snap.bytesTransferred / snap.totalBytes) * 100).toString();
-        
+
             return (Text(
               '$progress % Uploaded',
               style: TextStyle(

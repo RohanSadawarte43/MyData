@@ -35,6 +35,14 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Home',
+            style: TextStyle(
+              fontSize: 25,
+            )),
+        backgroundColor: Colors.grey[800],
+        centerTitle: true,
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[

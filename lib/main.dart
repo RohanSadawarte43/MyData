@@ -3,6 +3,7 @@ import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:my_info/common/Documents.dart';
 import 'package:my_info/common/Home.dart';
 import 'package:my_info/common/Skills.dart';
+import 'package:my_info/common/ToDo.dart';
 
 
 Future<void> main() async {
@@ -44,6 +45,9 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     Container(
       child: UploadMultipleImageDemo(),
     ),
+    Container(
+      child: ToDo(),
+    ),
   ];
 
   void _onItemTapped(int index) {
@@ -55,14 +59,9 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('My Data'),
-        backgroundColor: Colors.grey[800],
-        centerTitle: true,
-      ),
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.grey[800],
+        backgroundColor: Colors.grey[900],
         selectedItemColor: Colors.black,
         unselectedItemColor: Colors.white,
         items: const <BottomNavigationBarItem>[
@@ -72,12 +71,19 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
+            backgroundColor: Colors.grey,
             icon: Icon(MaterialCommunityIcons.trophy),
             label: 'Skills',
           ),
           BottomNavigationBarItem(
+            backgroundColor: Colors.grey,
             icon: Icon(MaterialCommunityIcons.file_document),
             label: 'Documents',
+          ),
+          BottomNavigationBarItem(
+            backgroundColor: Colors.grey,
+            icon: Icon(MaterialCommunityIcons.check),
+            label: 'To-Do',
           ),
         ],
         currentIndex: _selectedIndex,
