@@ -5,7 +5,6 @@ import 'package:my_info/common/Home.dart';
 import 'package:my_info/common/Skills.dart';
 import 'package:my_info/common/ToDo.dart';
 
-
 Future<void> main() async {
   runApp(MaterialApp(
     home: MyApp(),
@@ -32,7 +31,6 @@ class MyStatefulWidget extends StatefulWidget {
   State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
 }
 
-/// This is the private State class that goes with MyStatefulWidget.
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   int _selectedIndex = 0;
   List _widgetOptions = <Widget>[
@@ -61,27 +59,27 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     return Scaffold(
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.grey[900],
-        selectedItemColor: Colors.black,
-        unselectedItemColor: Colors.white,
+        backgroundColor: Colors.black,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.grey[800],
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            backgroundColor: Colors.grey,
+            backgroundColor: Colors.black,
             icon: Icon(Icons.home),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            backgroundColor: Colors.grey,
+            backgroundColor: Colors.black,
             icon: Icon(MaterialCommunityIcons.trophy),
             label: 'Skills',
           ),
           BottomNavigationBarItem(
-            backgroundColor: Colors.grey,
+            backgroundColor: Colors.black,
             icon: Icon(MaterialCommunityIcons.file_document),
             label: 'Documents',
           ),
           BottomNavigationBarItem(
-            backgroundColor: Colors.grey,
+            backgroundColor: Colors.black,
             icon: Icon(MaterialCommunityIcons.check),
             label: 'To-Do',
           ),

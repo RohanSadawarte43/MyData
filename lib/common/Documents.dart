@@ -5,11 +5,9 @@ import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:file_picker/src/file_picker.dart';
-import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:my_info/api/FirebaseApi.dart';
 import 'package:my_info/api/FirebaseApiD.dart';
 import 'package:my_info/model/Firebase_file.dart';
-import 'package:my_info/pages/image_page.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class UploadMultipleImageDemo extends StatefulWidget {
@@ -157,6 +155,7 @@ class _UploadMultipleImageDemoState extends State<UploadMultipleImageDemo> {
                                     return buildFile(context, file);
                                   }),
                             ),
+                            SizedBox(height: 20,)
                           ],
                         )));
               }
@@ -164,17 +163,9 @@ class _UploadMultipleImageDemoState extends State<UploadMultipleImageDemo> {
         });
   }
 
-  // void getPermission() async{
-  //   print("Get Permission");
-  //   await PermissionHandler().requestPermissions([PermissionGroup.storage]);
-  // }
-
   Future download2(Dio dio, String url, String savePath) async {
-    //get pdf from link
     Response response = await dio.get(
       url,
-      // onReceiveProgress: showDownloadProgress,
-      //Received data with List<int>
       options: Options(
           responseType: ResponseType.bytes,
           followRedirects: false,
@@ -182,20 +173,12 @@ class _UploadMultipleImageDemoState extends State<UploadMultipleImageDemo> {
             return status < 500;
           }),
     );
-
-    //write in download folder
     File file = File(savePath);
     var raf = file.openSync(mode: FileMode.write);
-    print("Check1");
     raf.writeFromSync(response.data);
-    print("Check2");
     await raf.close();
   }
 
-//progress bar
-  // if (total != -1) {
-  // print((received / total * 100).toStringAsFixed(0) + "%");
-  // }
   Widget buildFile(BuildContext context, FirebaseFile file) {
     return (ListTile(
       title: Text(
@@ -216,14 +199,11 @@ class _UploadMultipleImageDemoState extends State<UploadMultipleImageDemo> {
               final Reference ref =
                   FirebaseStorage.instance.ref().child("files/$name");
               if (await Permission.storage.request().isGranted) {
-                print("$name Downloading");
                 String path =
                     await ExtStorage.getExternalStoragePublicDirectory(
                         ExtStorage.DIRECTORY_DOWNLOADS);
                 String url = (await ref.getDownloadURL()).toString();
                 String fullPath = "$path/$name";
-                print(url);
-                print(fullPath);
                 var dio = Dio();
                 download2(dio, url, fullPath);
               }
@@ -281,8 +261,6 @@ class _UploadMultipleImageDemoState extends State<UploadMultipleImageDemo> {
     }
     final snapshot = await task.whenComplete(() => null);
     final urlDownload = await snapshot.ref.getDownloadURL();
-
-    print("Download : $urlDownload");
   }
 
   buildUploadStatus(UploadTask task) => StreamBuilder(

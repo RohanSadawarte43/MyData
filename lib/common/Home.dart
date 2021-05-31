@@ -25,7 +25,6 @@ void _launchURL() async {
 }
 
 class Home extends StatefulWidget {
-  // This widget is the root of your application.
 
   @override
   _HomeState createState() => _HomeState();
@@ -56,12 +55,14 @@ class _HomeState extends State<Home> {
                     child: CircleAvatar(
                       backgroundImage: AssetImage('assets/RohanF.jpg'),
                       radius: 50,
-                    ))),
+                    )
+                )
+            ),
             SizedBox(
               height: 30,
             ),
             Text(
-              'Computer Engineer ',
+              'Computer Engineer',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 20,
@@ -76,9 +77,13 @@ class _HomeState extends State<Home> {
             ),
             AppCard(name: 'Birth Date', body: '4\u1d57\u02b0 March, 2001'),
             SizedBox(
-              height: 10,
+              height: 5,
             ),
             AppCard(name: 'College', body: 'VIIT, Pune'),
+            SizedBox(
+              height: 5,
+            ),
+            AppCard(name: 'Contact', body: '+91 9146131689'),
             SizedBox(height: 30),
             Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
               Container(
