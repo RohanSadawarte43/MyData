@@ -56,7 +56,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('My Info'),
+        title: Text('My Data'),
         backgroundColor: Colors.grey[800],
         centerTitle: true,
       ),

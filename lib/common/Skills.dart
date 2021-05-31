@@ -12,26 +12,36 @@ class _SkillsState extends State<Skills> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(children: [
+          SizedBox(height: 25),
+          Container(
+              child: Text(
+                'Skills Acquired Yet',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 25,
+                  ),
+              ),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.grey[800],
+                boxShadow: [
+                  BoxShadow(color: Colors.grey[850], spreadRadius: 3),
+                ],
+              ),
+              padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
+            ),
+          // Divider(
+          //   color: Colors.white,
+          //   thickness: 2,
+          // ),
           SizedBox(height: 15,),
-          Text(
-            'Skill-Set',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 40,
-            ) ,
-          ),
-          Divider(
-            color: Colors.white,
-            thickness: 2,
-          ),
-          SizedBox(height: 15,),
-          Text(
-            'Acquired Yet',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 20,
-            ) ,
-          ),
+          // Text(
+          //   'Acquired Yet',
+          //   style: TextStyle(
+          //     color: Colors.white,
+          //     fontSize: 20,
+          //   ) ,
+          // ),
           SizedBox(height: 10,),
           SkillTemp(name: 'Flutter', percent: 60),
           SizedBox(height: 10,),
@@ -53,13 +63,22 @@ class _SkillsState extends State<Skills> {
             thickness: 2,
           ),
           SizedBox(height: 15,),
-          Text(
-            'Learning...',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 20,
+          Container(
+              child: Text(
+                'Learning',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 25 ),
+              ),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.grey[800],
+                boxShadow: [
+                  BoxShadow(color: Colors.grey[850], spreadRadius: 3),
+                ],
+              ),
+              padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
             ),
-          ),
           SizedBox(height: 10,),
           SkillTemp(name: 'Deep-Learning', percent: 35),
           SizedBox(height: 10,),

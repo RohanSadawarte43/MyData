@@ -12,7 +12,6 @@ import 'package:my_info/model/Firebase_file.dart';
 import 'package:my_info/pages/image_page.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-
 class UploadMultipleImageDemo extends StatefulWidget {
   @override
   _UploadMultipleImageDemoState createState() =>
@@ -23,6 +22,7 @@ class _UploadMultipleImageDemoState extends State<UploadMultipleImageDemo> {
   UploadTask task;
   File file;
   String filename = "Select a file from device";
+  String uploadText = "Click to upload";
   Future<List<FirebaseFile>> futureFiles;
 
   initialize() async {
@@ -40,113 +40,122 @@ class _UploadMultipleImageDemoState extends State<UploadMultipleImageDemo> {
   @override
   Widget build(BuildContext context) {
     initialize();
-    
-    final imgURL ="https://firebasestorage.googleapis.com/v0/b/my-docs-6fc8c.appspot.com/o/files%2FApplied%20Machine%20Learning%20in%20Python.pdf?alt=media&token=da9d29d9-7d87-44ef-aab4-5304a7643816";
+
+    final imgURL =
+        "https://firebasestorage.googleapis.com/v0/b/my-docs-6fc8c.appspot.com/o/files%2FApplied%20Machine%20Learning%20in%20Python.pdf?alt=media&token=da9d29d9-7d87-44ef-aab4-5304a7643816";
     var dio = Dio();
     return FutureBuilder<List<FirebaseFile>>(
         future: futureFiles,
         builder: (context, snapshot) {
-          switch(snapshot.connectionState){
+          switch (snapshot.connectionState) {
             case ConnectionState.waiting:
               return Center(child: CircularProgressIndicator());
             default:
-            if(snapshot.hasError){
-              return UploadMultipleImageDemo();  
-            }else {
-              final files = snapshot.data;
-          return Container(
-              color: Colors.grey[900],
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    'Upload',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 40,
-                    ),
-                  ),
-                  Divider(
-                    color: Colors.white,
-                    thickness: 2,
-                  ),
-                  RaisedButton(
-                      color: Colors.grey[700],
-                      onPressed: selectFile,
-                      child: Text(
-                        'Select',
-                        style: TextStyle(color: Colors.black),
-                      )),
-                  Text(
-                    filename,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  RaisedButton(
-                      color: Colors.grey[700],
-                      onPressed: uploadFile,
-                      child: Text(
-                        'Upload',
-                        style: TextStyle(color: Colors.black),
-                      )),
-                  task != null ? buildUploadStatus(task) : Container(),
-                  Text(
-                    'Download',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 40,
-                    ),
-                  ),
-                  buildHeader(files.length),
-                  SizedBox(height: 12,),
-                  Expanded(child: ListView.builder(
-                    itemCount: files.length,
-                    itemBuilder: (context, index){
-                      final file = files[index];
-                      return buildFile(context, file);
-                    }
-                  ),
-                  ),
-                    RaisedButton(
-                      color: Colors.grey[700],
-                      onPressed:()async{
-                        if (await Permission.storage.request().isGranted) {
-                        // getPermission();
-                        String path = await ExtStorage.getExternalStoragePublicDirectory(
-                          ExtStorage.DIRECTORY_DOWNLOADS);
-                          String fullPath = "$path/abc.pdf";
-                          print("hiiiii");
-                          download2(dio, imgURL,fullPath);
-                        }
-                      },
-                      child: Text(
-                        'Download',
-                        style: TextStyle(color: Colors.black),
-                      )
-                      ),
-                ],
-              ));
-                }
+              if (snapshot.hasError) {
+                return UploadMultipleImageDemo();
+              } else {
+                final files = snapshot.data;
+                return Container(
+                    color: Colors.grey[900],
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        SizedBox(
+                          height: 25,
+                        ),
+                        Container(
+                          child: Text(
+                            'Upload',
+                            style: TextStyle(color: Colors.white, fontSize: 25),
+                          ),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.grey[800],
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey[850], spreadRadius: 3),
+                            ],
+                          ),
+                          padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
+                        ),
+                        SizedBox(height: 20,),
+                        RaisedButton(
+                            color: Colors.grey[700],
+                            onPressed: selectFile,
+                            child: Text(
+                              'Select',
+                              style: TextStyle(color: Colors.black),
+                            )),
+                        Text(
+                          filename,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        RaisedButton(
+                            color: Colors.grey[700],
+                            onPressed: uploadFile,
+                            child: Text(
+                              'Upload',
+                              style: TextStyle(color: Colors.black),
+                            )),
+                        task != null ? buildUploadStatus(task) : Container(),
+                         Text(
+                          uploadText,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                          ),
+                        ),
+                        Divider(
+                          color: Colors.white,
+                        ),
+                        SizedBox(
+                          height: 25,
+                        ),
+                        Container(
+                          child: Text(
+                            'Download',
+                            style: TextStyle(color: Colors.white, fontSize: 25),
+                          ),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.grey[800],
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey[850], spreadRadius: 3),
+                            ],
+                          ),
+                          padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
+                        ),
+                        SizedBox(
+                          height: 12,
+                        ),
+                        Expanded(
+                          child: ListView.builder(
+                              itemCount: files.length,
+                              itemBuilder: (context, index) {
+                                final file = files[index];
+                                return buildFile(context, file);
+                              }),
+                        ),
+                      ],
+                    ));
+              }
           }
         });
   }
 
-    // void getPermission() async{
-    //   print("Get Permission");
-    //   await PermissionHandler().requestPermissions([PermissionGroup.storage]);
-    // }
+  // void getPermission() async{
+  //   print("Get Permission");
+  //   await PermissionHandler().requestPermissions([PermissionGroup.storage]);
+  // }
 
-
-
-Future download2(Dio dio, String url, String savePath) async {
+  Future download2(Dio dio, String url, String savePath) async {
     //get pdf from link
     Response response = await dio.get(
       url,
@@ -168,51 +177,50 @@ Future download2(Dio dio, String url, String savePath) async {
     print("Check2");
     await raf.close();
   }
+
 //progress bar
   // if (total != -1) {
   // print((received / total * 100).toStringAsFixed(0) + "%");
   // }
-    Widget buildFile(BuildContext context, FirebaseFile file){
-      return(
-      ListTile(
-        title: Text(
-          file.name,
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            decoration: TextDecoration.underline,
-            color: Colors.blue,
-          ),
+  Widget buildFile(BuildContext context, FirebaseFile file) {
+    return (ListTile(
+      title: Text(
+        (file.name).split(".")[0],
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          decoration: TextDecoration.underline,
+          color: Colors.blue,
         ),
-        // onTap: () => Navigator.of(context).push(MaterialPageRoute(
-        //   builder: (context) => ImagePage(file: file),
-        // )),
-        leading: Container(
-          color: Colors.white,
-          
-          child: IconButton(
-          icon: Icon(Icons.file_download),
-          splashColor: Colors.white,
-          color: Colors.green,
-          onPressed:() async{
-            String name = file.name;
-            final Reference ref = FirebaseStorage.instance.ref().child("files/$name");
-            if (await Permission.storage.request().isGranted) {
-            print("$name Downloading");
-            String path = await ExtStorage.getExternalStoragePublicDirectory(
-                          ExtStorage.DIRECTORY_DOWNLOADS);
-            String url = (await ref.getDownloadURL()).toString();
-            String fullPath = "$path/$name";
-            print(url);
-            print(fullPath);
-            var dio = Dio();
-            download2(dio, url, fullPath);
-            }
-          }
-          ),
-        ),
-      )
-      );
-    }
+      ),
+      // onTap: () => Navigator.of(context).push(MaterialPageRoute(
+      //   builder: (context) => ImagePage(file: file),
+      // )),
+      leading: Container(
+        color: Colors.white,
+        child: IconButton(
+            icon: Icon(Icons.file_download),
+            splashColor: Colors.white,
+            color: Colors.green,
+            onPressed: () async {
+              String name = file.name;
+              final Reference ref =
+                  FirebaseStorage.instance.ref().child("files/$name");
+              if (await Permission.storage.request().isGranted) {
+                print("$name Downloading");
+                String path =
+                    await ExtStorage.getExternalStoragePublicDirectory(
+                        ExtStorage.DIRECTORY_DOWNLOADS);
+                String url = (await ref.getDownloadURL()).toString();
+                String fullPath = "$path/$name";
+                print(url);
+                print(fullPath);
+                var dio = Dio();
+                download2(dio, url, fullPath);
+              }
+            }),
+      ),
+    ));
+  }
 
   Widget buildHeader(int length) => ListTile(
         tileColor: Colors.blue,
@@ -256,6 +264,9 @@ Future download2(Dio dio, String url, String savePath) async {
     final destination = 'files/$filename';
     task = FirebaseApi.uploadFile(destination, file);
     setState(() {});
+    setState(() => {
+          uploadText = ""
+    });
 
     if (task == null) {
       return null;
@@ -273,9 +284,9 @@ Future download2(Dio dio, String url, String savePath) async {
             final snap = snapshot.data;
             final progress =
                 ((snap.bytesTransferred / snap.totalBytes) * 100).toString();
-
+        
             return (Text(
-              '$progress % Done',
+              '$progress % Uploaded',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 20,
