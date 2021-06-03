@@ -1,6 +1,8 @@
 # My Data
 
 A new Flutter project.
+![Page1 (1)]<img src="https://user-images.githubusercontent.com/82522478/120690903-6c535700-c4c3-11eb-974d-d1e260d1c4f4.gif" width="300" height="600">
+
 ![page 2]<img src="https://user-images.githubusercontent.com/82522478/120582691-86048800-c44a-11eb-9355-33f3faa89ff2.gif" width="300" height="600">
 
 
