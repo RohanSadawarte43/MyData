@@ -16,11 +16,22 @@ This skills page keeps track of my current knowledge aboout new technologies and
 
 
 
-<p>My Documents</p>
+<h2>My Documents Page</h2>
 I have used Firebase database for this app. This is my Firebase console before I upload any file from my device.<br><br>
+
 ![Screenshot (75)](https://user-images.githubusercontent.com/82522478/122678973-8badec00-d206-11eb-8c11-7fa490866ff6.png)
 
+<h3>Here is how this Page works:</h3>
+1. If I feel any file is important, I would open the app and click on Select button.<br>
+2. I will select that file and we will see the status of file loaded. Once it is loaded 100%, I will click on Upload button.<br>                                     
+3. Now once I refresh the page, I would be able to see that document in the list of documents.<br>
+4. Here I uploaded my resume(Rohan Sadawarte.pdf) file first and as soon as I refreshed we can see that file in the list.<br>
+5. Then later, I downloaded two files (Machine Learning, Rohan Sadawarte) and we can see both the files in downloads folder of our device with current time (7:16 PM)<br>
+<br>
+
 <img src="https://user-images.githubusercontent.com/82522478/122678396-53a5a980-d204-11eb-9e88-8af9164d9bf9.gif" width="300" height="600">
+
+Here we can see the Firebase console again with Rohan Sadawarte.pdf file added<br><br>
 
 ![Screenshot (76)](https://user-images.githubusercontent.com/82522478/122678984-9bc5cb80-d206-11eb-913c-ed69c02edff7.png)
 
