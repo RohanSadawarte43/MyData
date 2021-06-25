@@ -5,6 +5,7 @@ I have made a simple Flutter application which could store all my important data
 
 
 <p>Page 1</p>
+This is the home page of my app where I could add more details of mine and I can quickly access my important links like my Github profile, my YouTube channel as well as my portpolio
 <img src="https://user-images.githubusercontent.com/82522478/122677885-f01a7c80-d201-11eb-886c-8e24d1611048.gif" width="300" height="600">
 
 
