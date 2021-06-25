@@ -8,13 +8,13 @@ I have made a simple Flutter application which could store all my important data
 This is the home page of my app where I could add more details of mine and I can quickly access my important links like my Github profile, my YouTube channel as well as my portpolio.<br><br>
 <img src="https://user-images.githubusercontent.com/82522478/122677885-f01a7c80-d201-11eb-886c-8e24d1611048.gif" width="300" height="600">
 
+<br><br>
 
 <h2>Skills Page</h2>
 This skills page keeps track of my current knowledge aboout new technologies and motivates me to gain the knowledge where I lack.<br><br>
 <img src="https://user-images.githubusercontent.com/82522478/122678315-e8f46e00-d203-11eb-81fc-f9441d4c64c1.gif" width="300" height="600">
 
-
-
+<br><br>
 
 <h2>My Documents Page</h2>
 I have used Firebase database for this app. This is my Firebase console before I upload any file from my device.<br><br>
@@ -35,6 +35,7 @@ Here we can see the Firebase console again with Rohan Sadawarte.pdf file added<b
 
 ![Screenshot (76)](https://user-images.githubusercontent.com/82522478/122678984-9bc5cb80-d206-11eb-913c-ed69c02edff7.png)
 
+<br><br>
 
 <h2>To-Do List Page</h2>
 This page keeps me use my app daily all the time as I can add all the To-Do's daily and keep the track of my daily activites.<br><br>
