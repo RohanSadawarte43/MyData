@@ -10,7 +10,7 @@ This is the home page of my app where I could add more details of mine and I can
 
 
 <h2>Skills Page</h2>
-
+This skills page keeps track of my current knowledge aboout new technologies and motivates me to gain the knowledge where I lack 
 <img src="https://user-images.githubusercontent.com/82522478/122678315-e8f46e00-d203-11eb-81fc-f9441d4c64c1.gif" width="300" height="600">
 
 
