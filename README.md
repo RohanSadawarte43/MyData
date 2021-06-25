@@ -1,7 +1,7 @@
 # My Information
 
 Hello Everyone!<br>
-I have made a simple Flutter application which could store all my important data in one place but more importantly keeps me motivated to try new things! 
+I have made a simple Flutter application which could store all my important data in one place but more importantly keeps me motivated to try new things! The main aim to build this app was all the documents, images and other important files I can upload and download quickly through my phone and my To-Do list.  
 <br><br>
 
 <h2>Home Page</h2>
@@ -16,8 +16,8 @@ This skills page keeps track of my current knowledge aboout new technologies and
 
 
 
-<p>Page 3</p>
-
+<p>My Documents</p>
+I have used Firebase database for this app. This is my Firebase console before I upload any file from my device.<br><br>
 ![Screenshot (75)](https://user-images.githubusercontent.com/82522478/122678973-8badec00-d206-11eb-8c11-7fa490866ff6.png)
 
 <img src="https://user-images.githubusercontent.com/82522478/122678396-53a5a980-d204-11eb-9e88-8af9164d9bf9.gif" width="300" height="600">
