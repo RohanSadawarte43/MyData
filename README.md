@@ -1,6 +1,6 @@
 # My Information
 
-Hello Everyone!
+Hello Everyone!<br>
 I have made a simple Flutter application which could store all my important data in one place but more importantly keeps me motivated to try new things! 
 
 
