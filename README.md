@@ -1,4 +1,4 @@
-# My Information
+# My Data Keeper + Motivator
 
 Hello Everyone!<br>
 I have made a simple Flutter application which could store all my important data in one place but more importantly keeps me motivated to try new things! The main aim to build this app was all the documents, images and other important files I can upload and download quickly through my phone and my To-Do list.  
